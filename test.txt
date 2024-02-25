@@ -1,0 +1,36 @@
+{
+    "name": "Human Resources",
+    "employees": [
+        {
+            "name": "Alice",
+            "id": 1,
+            "skills": [
+                "communication",
+                "organization"
+            ],
+            "employee_greeting": null,
+            "_type": "celery_json.test_encoder_decoder.encoder_tests.Employee"
+        },
+        {
+            "name": "Bob",
+            "id": 2,
+            "skills": [
+                "recruitment",
+                "planning"
+            ],
+            "employee_greeting": null,
+            "_type": "celery_json.test_encoder_decoder.encoder_tests.Employee"
+        }
+    ],
+    "budget": {
+        "2023": 50000.0,
+        "2024": 52000.0
+    },
+    "meeting_schedule": "<crontab: 0 9,17 * * * (m/h/dM/MY/d)>",
+    "department_greeting": {
+        "name": "celery_json.test_encoder_decoder.encoder_tests.Department.<lambda>",
+        "args": [],
+        "kwargs": {}
+    },
+    "_type": "celery_json.test_encoder_decoder.encoder_tests.Department"
+}

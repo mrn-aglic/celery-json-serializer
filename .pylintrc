@@ -25,6 +25,7 @@ disable =
   unspecified-encoding,
   wrong-import-order,
   wrong-import-position,
+  arguments-renamed,
 
 [REPORTS]
 output-format=colorized
