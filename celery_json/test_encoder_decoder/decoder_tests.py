@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from celery_json.celery_json_serializer.serializer.encoder import CustomEncoder
+from celery_json.celery_json_serializer.serializer.decoder import CustomDecoder
 from celery_json.functions.helpers import example_function
 from celery_json.test_encoder_decoder.classes import Department, Employee
 
@@ -25,26 +25,36 @@ hr_department = Department(
 )
 
 
-class TestComplexCustomEncoder(unittest.TestCase):
-    def test_employee_serialization(self):
-        employee = Employee("John", 3, ["Python", "Data Analysis"])
-        expected = json.dumps(
+class TestComplexCustomDecoder(unittest.TestCase):
+    def test_employee_deserialization(self):
+        expected = Employee(
+            "John", 3, ["Python", "Data Analysis"], employee_greeting=example_function
+        )
+
+        employee = json.dumps(
             {
                 "name": "John",
                 "id": 3,
                 "skills": ["Python", "Data Analysis"],
-                "employee_greeting": None,
+                "employee_greeting": {
+                    "name": "celery_json.functions.helpers.example_function",
+                    "args": [],
+                    "kwargs": {},
+                    "_handler": "FunctionHandler",
+                },
                 "_type": "celery_json.test_encoder_decoder.classes.Employee",
                 "_handler": "DataclassHandler",
             }
         )
 
-        self.assertEqual(json.dumps(employee, cls=CustomEncoder), expected)
+        self.assertEqual(json.loads(employee, cls=CustomDecoder), expected)
 
     def test_department_serialization(self):
         self.maxDiff = None
 
-        expected = json.dumps(
+        expected = hr_department
+
+        department = json.dumps(
             {
                 "name": "Human Resources",
                 "employees": [
@@ -132,7 +142,7 @@ class TestComplexCustomEncoder(unittest.TestCase):
             }
         )
 
-        self.assertEqual(json.dumps(hr_department, cls=CustomEncoder), expected)
+        self.assertEqual(json.loads(department, cls=CustomDecoder), expected)
 
     # Include previous test cases here for completeness
 
