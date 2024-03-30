@@ -3,9 +3,12 @@ from kombu import Exchange, Queue
 broker_url = "redis://redis:6379/0"
 result_backend = "redis://redis:6379/1"
 
-task_serializer = "json"
-accept_content = ["json"]
-result_serializer = "json"
+# task_serializer = "json"
+# accept_content = ["json"]
+# result_serializer = "json"
+task_serializer = "custom_json_serializer"
+accept_content = ["application/json"]
+result_serializer = "custom_json_serializer"
 enable_utc = True
 
 task_create_missing_queues = True

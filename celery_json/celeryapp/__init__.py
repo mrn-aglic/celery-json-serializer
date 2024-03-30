@@ -4,8 +4,11 @@ from celery import Celery
 
 from . import celeryconfig
 from .celeryconfig import task_queues
+from .kombuconfig import register_serializer
 
-app = Celery("reset_schedule")
+register_serializer()
+
+app = Celery("celery_json")
 
 app.config_from_object(celeryconfig)
 
