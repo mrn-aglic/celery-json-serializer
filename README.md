@@ -70,6 +70,8 @@ Here is an example:
 },
 ```
 
+When deserializing a function JSON, the `FunctionHandler`
+returns an instance of the `functools.partial` function.
 
 ### Representing dataclasses as JSON
 The JSON representation of a dataclass:
