@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -r requirements/requirements.txt
 
 COPY . /app
 
-LABEL name=celery-examples version=dev
+LABEL name=celery-json-serializer-example version=dev
 
 RUN chmod +x ./entrypoint.sh
 
