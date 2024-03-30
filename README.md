@@ -1,0 +1,1 @@
+# celery-json-serializer
