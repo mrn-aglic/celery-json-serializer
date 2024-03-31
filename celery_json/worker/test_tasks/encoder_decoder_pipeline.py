@@ -8,9 +8,9 @@ def producer():
 
 
 @app.task
-def consumer(hr_department):
-    print(hr_department)
-    print(f"The type of the variable is: {type(hr_department)}")
+def consumer(department):
+    print(department)
+    print(f"The type of the variable is: {type(department)}")
 
 
 @app.task
