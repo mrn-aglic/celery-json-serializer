@@ -1,6 +1,7 @@
 import json
 import unittest
 
+from celery_json.celery_json_serializer import json_serialization_config
 from celery_json.celery_json_serializer.serializer.encoder import CustomEncoder
 from celery_json.functions.helpers import example_function
 from celery_json.test_encoder_decoder.classes import Department, Employee
@@ -39,7 +40,10 @@ class TestComplexCustomEncoder(unittest.TestCase):
             }
         )
 
-        self.assertEqual(json.dumps(employee, cls=CustomEncoder), expected)
+        self.assertEqual(
+            json.dumps(employee, cls=CustomEncoder, config=json_serialization_config),
+            expected,
+        )
 
     def test_department_serialization(self):
         self.maxDiff = None
@@ -132,7 +136,12 @@ class TestComplexCustomEncoder(unittest.TestCase):
             }
         )
 
-        self.assertEqual(json.dumps(hr_department, cls=CustomEncoder), expected)
+        self.assertEqual(
+            json.dumps(
+                hr_department, cls=CustomEncoder, config=json_serialization_config
+            ),
+            expected,
+        )
 
     # Include previous test cases here for completeness
 

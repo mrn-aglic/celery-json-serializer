@@ -1,1 +1,1 @@
-from .serialization_config import json_serialization_config
+from .serialization_config import SerializationConfig, json_serialization_config
