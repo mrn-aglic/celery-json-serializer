@@ -7,7 +7,7 @@ from ..config.serialization_config import SerializationConfig, json_serializatio
 class CustomDecoder(json.JSONDecoder):
     _handler_key = "_handler"
 
-    def __init__(self, *args, config: Optional[SerializationConfig], **kwargs):
+    def __init__(self, *args, config: Optional[SerializationConfig] = None, **kwargs):
         self.serialization_config = config or json_serialization_config
 
         super().__init__(object_hook=self.custom_decoding_hook, *args, **kwargs)

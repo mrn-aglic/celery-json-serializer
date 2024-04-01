@@ -155,3 +155,18 @@ from celery_json.celery_json_serializer import serializer_registration
 def example_function():
     print("hello from example function")
 ```
+
+
+Both the `register_function` and `register_dataclass`
+decorators can be used with or without parantheses. 
+
+However, if you want to use a custom configuration
+(not the default one created), you need to pass the
+configuration to the decorator. 
+
+For example, explicitly passing the default config:
+```python
+@serializer_registration.register_function(config=json_serialization_config)
+def example_function():
+    print("hello from example function")
+```
